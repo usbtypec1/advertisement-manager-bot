@@ -4,6 +4,7 @@ from .advertisements import (
     AdvertisementMediaFile,
     AdvertisementStatus,
 )
+from .temporary_media_files import TemporaryMediaFile
 from .users import User
 
 __all__ = (
@@ -12,4 +13,5 @@ __all__ = (
     "AdvertisementMediaFile",
     "AdvertisementMediaFileType",
     "User",
+    "TemporaryMediaFile",
 )
