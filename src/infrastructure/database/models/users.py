@@ -17,7 +17,7 @@ class User(Base):
     username: Mapped[str | None] = mapped_column(String(32))
     phone_number: Mapped[str | None] = mapped_column(String(32))
     is_banned: Mapped[bool] = mapped_column(default=False)
-    created_at: Mapped[datetime] = mapped_column(server_default=func.utcnow())
+    created_at: Mapped[datetime] = mapped_column(server_default=func.now())
 
     def __repr__(self) -> str:
         return f"User(id={self.id!r}, full_name={self.full_name!r}, username={self.username!r}, phone_number={self.phone_number!r}, is_banned={self.is_banned!r}, created_at={self.created_at!r})"
