@@ -1,8 +1,10 @@
-from .advertisement_media_files import (
+from .advertisements import (
+    Advertisement,
+    AdvertisementStatus,
     AdvertisementMediaFile,
     AdvertisementMediaFileType,
 )
-from .advertisements import Advertisement, AdvertisementStatus
+
 from .users import User
 
 

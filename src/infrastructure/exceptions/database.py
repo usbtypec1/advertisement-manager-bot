@@ -1,2 +1,2 @@
-class ObjectDoesNotExistError(Exception):
+class ObjectNotFoundError(Exception):
     pass

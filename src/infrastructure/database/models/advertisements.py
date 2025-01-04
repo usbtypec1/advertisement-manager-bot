@@ -8,7 +8,17 @@ from sqlalchemy.sql import func
 from infrastructure.database.models.base import Base
 
 
-__all__ = ("Advertisement", "AdvertisementStatus")
+__all__ = (
+    "Advertisement",
+    "AdvertisementStatus",
+    "AdvertisementMediaFile",
+    "AdvertisementMediaFileType",
+)
+
+
+class AdvertisementMediaFileType(IntEnum):
+    PHOTO = 1
+    VIDEO = 2
 
 
 class AdvertisementStatus(IntEnum):
@@ -16,6 +26,24 @@ class AdvertisementStatus(IntEnum):
     PUBLISHED = 2
     DELETED = 3
     REJECTED = 4
+
+
+class AdvertisementMediaFile(Base):
+    __tablename__ = "advertisement_media_files"
+
+    id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
+    telegram_id: Mapped[str] = mapped_column(String(255))
+    type: Mapped[AdvertisementMediaFileType]
+    advertisement_id: Mapped[int] = mapped_column(
+        ForeignKey("advertisements.id", ondelete="CASCADE")
+    )
+
+    advertisement: Mapped["Advertisement"] = relationship(
+        "Advertisement", back_populates="media_files"
+    )
+
+    def __repr__(self) -> str:
+        return f"AdvertisementMediaFile(id={self.id!r}, telegram_id={self.telegram_id!r}, type={self.type!r}, advertisement_id={self.advertisement_id!r})"
 
 
 class Advertisement(Base):
@@ -29,4 +57,7 @@ class Advertisement(Base):
     )
     created_at: Mapped[datetime] = mapped_column(server_default=func.now())
 
-    user = relationship("User", back_populates="advertisements")
+    media_files: Mapped[list[AdvertisementMediaFile]] = relationship(
+        "AdvertisementMediaFile",
+        back_populates="advertisement",
+    )

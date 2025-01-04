@@ -1,9 +1,9 @@
 from sqlalchemy.dialects.sqlite import insert
 
 from infrastructure.database.models.advertisements import Advertisement
-from infrastructure.database.repositories.base import DatabaseRepository
+from infrastructure.database.dao.base import DatabaseDAO
 
 
-class AdvertisementRepository(DatabaseRepository):
+class AdvertisementDAO(DatabaseDAO):
     def create(self):
         insert(Advertisement).values()

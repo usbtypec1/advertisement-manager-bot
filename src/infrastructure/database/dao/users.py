@@ -6,8 +6,11 @@ from sqlalchemy import select
 from sqlalchemy.dialects.sqlite import insert
 
 from infrastructure.database.models import User
-from infrastructure.database.repositories.base import DatabaseRepository
-from infrastructure.exceptions import ObjectDoesNotExistError
+from infrastructure.database.dao.base import DatabaseDAO
+from infrastructure.exceptions import ObjectNotFoundError
+
+
+__all__ = ("UserDAO",)
 
 
 @dataclass(frozen=True, slots=True)
@@ -25,7 +28,7 @@ class UserCreate(Protocol):
     username: str | None
 
 
-class UserRepository(DatabaseRepository):
+class UserDAO(DatabaseDAO):
     def upsert(self, user: UserCreate) -> None:
         statement = insert(User).values(
             id=user.id, full_name=user.full_name, username=user.username
@@ -41,7 +44,7 @@ class UserRepository(DatabaseRepository):
         statement = select(User).where(User.id == user_id)
         user: User | None = self._session.scalar(statement)
         if user is None:
-            raise ObjectDoesNotExistError(f"User by id {user_id} does not exist")
+            raise ObjectNotFoundError(f"User by id {user_id} does not exist")
         return UserDTO(
             id=user.id,
             full_name=user.full_name,

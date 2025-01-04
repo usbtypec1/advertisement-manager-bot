@@ -1,4 +1,4 @@
-from .database import ObjectDoesNotExistError
+from .database import ObjectNotFoundError
 
 
-__all__ = ("ObjectDoesNotExistError",)
+__all__ = ("ObjectNotFoundError",)

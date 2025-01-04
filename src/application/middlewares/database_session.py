@@ -19,6 +19,6 @@ class DatabaseSessionMiddleware(BaseMiddleware):
         event: TelegramObject,
         data: dict[str, Any],
     ) -> Any:
-        async with self.__session_factory() as session:
+        with self.__session_factory() as session:
             data["session"] = session
-            return await super().__call__(handler, event, data)
+            return await handler(event, data)
