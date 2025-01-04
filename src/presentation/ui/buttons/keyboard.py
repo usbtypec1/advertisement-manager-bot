@@ -10,6 +10,7 @@ __all__ = (
     "USER_REGISTER_FLOW_START_BUTTON",
     "USER_REGISTER_INPUT_PHONE_NUMBER_BUTTON",
     "SKIP_BUTTON",
+    "CONTINUE_BUTTON",
 )
 
 
@@ -25,3 +26,4 @@ USER_REGISTER_INPUT_PHONE_NUMBER_BUTTON: Final[KeyboardButton] = KeyboardButton(
     request_contact=True,
 )
 SKIP_BUTTON: Final[KeyboardButton] = KeyboardButton(text=texts.SKIP_BUTTON_TEXT)
+CONTINUE_BUTTON: Final[KeyboardButton] = KeyboardButton(text=texts.CONTINUE_BUTTON_TEXT)

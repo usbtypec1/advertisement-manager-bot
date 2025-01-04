@@ -8,6 +8,8 @@ __all__ = (
     "SKIP_BUTTON_TEXT",
     "ACCEPT_BUTTON_TEXT",
     "REJECT_BUTTON_TEXT",
+    "DELETE_BUTTON_TEXT",
+    "CONTINUE_BUTTON_TEXT",
 )
 
 
@@ -17,6 +19,9 @@ USER_REGISTER_FLOW_START_BUTTON_TEXT: Final[str] = "🚀 Вперед"
 USER_REGISTER_PHONE_NUMBER_INPUT_BUTTON_TEXT: Final[str] = "✅ Поделиться"
 
 SKIP_BUTTON_TEXT: Final[str] = "➡️ Пропустить"
+CONTINUE_BUTTON_TEXT: Final[str] = "➡️ Дальше"
 
 ACCEPT_BUTTON_TEXT: Final[str] = "✅ Подтвердить"
 REJECT_BUTTON_TEXT: Final[str] = "❌ Отменить"
+
+DELETE_BUTTON_TEXT: Final[str] = "❌ Удалить"

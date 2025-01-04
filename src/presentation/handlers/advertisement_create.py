@@ -18,3 +18,4 @@ async def on_advertisement_create_flow_start(
     state: FSMContext,
 ) -> None:
     await state.set_state(AdvertisementCreateStates.text)
+    await state.update_data(text=message.html_text)

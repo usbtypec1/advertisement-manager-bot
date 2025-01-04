@@ -1,9 +1,18 @@
 from aiogram.filters.callback_data import CallbackData
 from aiogram.types import InlineKeyboardButton
 
-from presentation.ui.buttons.texts import ACCEPT_BUTTON_TEXT, REJECT_BUTTON_TEXT
+from application.callback_data import DELETE_CALLBACK_DATA
+from presentation.ui.buttons.texts import (
+    ACCEPT_BUTTON_TEXT,
+    DELETE_BUTTON_TEXT,
+    REJECT_BUTTON_TEXT,
+)
 
-__all__ = ("create_accept_inline_button", "create_reject_inline_button")
+__all__ = (
+    "create_accept_inline_button",
+    "create_reject_inline_button",
+    "DELETE_BUTTON",
+)
 
 
 def create_accept_inline_button(
@@ -26,3 +35,9 @@ def create_reject_inline_button(
         text=REJECT_BUTTON_TEXT,
         callback_data=callback_data,
     )
+
+
+DELETE_BUTTON = InlineKeyboardButton(
+    text=DELETE_BUTTON_TEXT,
+    callback_data=DELETE_CALLBACK_DATA,
+)

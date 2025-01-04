@@ -5,7 +5,7 @@ from aiogram.types import (
     ReplyKeyboardRemove,
 )
 
-__all__ = ("ReplyMarkup", "TextView", "View")
+__all__ = ("ReplyMarkup", "TextView", "PhotoView", "View")
 
 
 # FOR TYPE INSPECTION ONLY !!!
@@ -29,5 +29,20 @@ class TextView:
         return self.disable_web_page_preview
 
 
+class PhotoView:
+    photo: str
+    caption: str | None = None
+    reply_markup: ReplyMarkup | None = None
+
+    def get_photo(self) -> str:
+        return self.photo
+
+    def get_caption(self) -> str | None:
+        return self.caption
+
+    def get_reply_markup(self) -> ReplyMarkup | None:
+        return self.reply_markup
+
+
 # FOR TYPE INSPECTION ONLY !!!
-type View = TextView
+type View = TextView | PhotoView
