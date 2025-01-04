@@ -8,6 +8,7 @@ from aiogram.types import (
 __all__ = ("ReplyMarkup", "TextView", "View")
 
 
+# FOR TYPE INSPECTION ONLY !!!
 type ReplyMarkup = (
     InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply
 )
@@ -28,4 +29,5 @@ class TextView:
         return self.disable_web_page_preview
 
 
+# FOR TYPE INSPECTION ONLY !!!
 type View = TextView

@@ -1,3 +1,4 @@
+from .advertisement_create import AdvertisementCreateTextInputView
 from .user_menu import UserMenuView
 from .user_register import (
     UserRegisterConfirmView,
@@ -10,4 +11,5 @@ __all__ = (
     "UserRegisterFlowStartView",
     "UserRegisterPhoneNumberInputView",
     "UserRegisterConfirmView",
+    "AdvertisementCreateTextInputView",
 )
