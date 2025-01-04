@@ -2,7 +2,11 @@ from presentation.ui.views.base import TextView
 from presentation.ui import markups, texts
 
 
-__all__ = ("UserRegisterFlowStartView", "UserRegisterPhoneNumberInputView")
+__all__ = (
+    "UserRegisterFlowStartView",
+    "UserRegisterPhoneNumberInputView",
+    "UserRegisterConfirmView",
+)
 
 
 class UserRegisterFlowStartView(TextView):
@@ -13,3 +17,8 @@ class UserRegisterFlowStartView(TextView):
 class UserRegisterPhoneNumberInputView(TextView):
     text = texts.USER_REGISTER_PHONE_NUMBER_INPUT_TEXT
     reply_markup = markups.USER_REGISTER_PHONE_NUMBER_INPUT_MARKUP
+
+
+class UserRegisterConfirmView(TextView):
+    text = texts.USER_REGISTER_CONFIRM_TEXT
+    reply_markup = markups.USER_REGISTER_CONFIRM_MARKUP
