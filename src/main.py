@@ -14,8 +14,8 @@ from infrastructure.database.models.base import Base
 
 def include_handlers(dispatcher: Dispatcher) -> None:
     dispatcher.include_routers(
-        handlers.menu.router,
         handlers.register.router,
+        handlers.menu.router,
     )
 
 
