@@ -7,7 +7,7 @@ __all__ = (
     "USER_REGISTER_CONFIRM_TEXT",
     "USER_AGREEMENT_URL",
     "ADVERTISEMENT_CREATE_TEXT_INPUT_TEXT",
-    "ADVERTISEMENT_CREATE_PHOTO_INPUT_TEXT",
+    "ADVERTISEMENT_CREATE_MEDIA_INPUT_TEXT",
 )
 
 
@@ -27,6 +27,6 @@ USER_REGISTER_CONFIRM_TEXT: Final[str] = (
 ADVERTISEMENT_CREATE_TEXT_INPUT_TEXT: Final[str] = (
     "📝 Введите описание вашего объявления"
 )
-ADVERTISEMENT_CREATE_PHOTO_INPUT_TEXT: Final[str] = (
+ADVERTISEMENT_CREATE_MEDIA_INPUT_TEXT: Final[str] = (
     "📸 Вы можете отправить фото/видео для вашего объявления"
 )

@@ -38,4 +38,4 @@ async def on_advertisement_create_text_input(
     message_text = message.text or ""
     validate_advertisement_text_length(message_text)
 
-    await state.set_state(AdvertisementCreateStates.photo)
+    await state.set_state(AdvertisementCreateStates.media)

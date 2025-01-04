@@ -5,5 +5,5 @@ __all__ = ("AdvertisementCreateStates",)
 
 class AdvertisementCreateStates(StatesGroup):
     text = State()
-    phono = State()
+    media = State()
     confirm = State()
