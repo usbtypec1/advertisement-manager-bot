@@ -1,6 +1,5 @@
 from typing import Final
 
-
 __all__ = ("ACCEPT_CALLBACK_DATA", "REJECT_CALLBACK_DATA")
 
 

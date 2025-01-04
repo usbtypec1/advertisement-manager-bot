@@ -1,4 +1,3 @@
-from . import buttons, texts, markups, views
-
+from . import buttons, markups, texts, views
 
 __all__ = ("buttons", "texts", "markups", "views")

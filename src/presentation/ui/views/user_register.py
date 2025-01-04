@@ -1,6 +1,5 @@
-from presentation.ui.views.base import TextView
 from presentation.ui import markups, texts
-
+from presentation.ui.views.base import TextView
 
 __all__ = (
     "UserRegisterFlowStartView",

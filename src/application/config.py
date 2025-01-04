@@ -1,8 +1,8 @@
 import pathlib
-import tomllib
-from typing import Final
 from dataclasses import dataclass
+from typing import Final
 
+import tomllib
 
 __all__ = (
     "Config",

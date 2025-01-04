@@ -1,10 +1,9 @@
-from collections.abc import Callable, Awaitable
+from collections.abc import Awaitable, Callable
 from typing import Any
 
 from aiogram.dispatcher.middlewares.base import BaseMiddleware
 from aiogram.types import TelegramObject
 from sqlalchemy.orm import sessionmaker
-
 
 __all__ = ("DatabaseSessionMiddleware",)
 

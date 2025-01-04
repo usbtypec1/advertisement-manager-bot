@@ -1,12 +1,10 @@
 from .advertisements import (
     Advertisement,
-    AdvertisementStatus,
     AdvertisementMediaFile,
     AdvertisementMediaFileType,
+    AdvertisementStatus,
 )
-
 from .users import User
-
 
 __all__ = (
     "Advertisement",

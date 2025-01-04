@@ -1,5 +1,4 @@
 from . import base
-from .users import UserNotFoundError, UserAlreadyExistsError
-
+from .users import UserAlreadyExistsError, UserNotFoundError
 
 __all__ = ("base", "UserNotFoundError", "UserAlreadyExistsError")

@@ -4,7 +4,6 @@ from aiogram.types import KeyboardButton
 
 from presentation.ui.buttons import texts
 
-
 __all__ = (
     "ADVERTISEMENT_CREATE_BUTTON",
     "SUPPORT_BUTTON",

@@ -1,6 +1,5 @@
 from typing import Final
 
-
 __all__ = (
     "ADVERTISEMENT_CREATE_BUTTON_TEXT",
     "SUPPORT_BUTTON_TEXT",

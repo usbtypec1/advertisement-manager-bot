@@ -1,7 +1,6 @@
 from aiogram.types import Message
 
-from presentation.ui.views.base import View, TextView
-
+from presentation.ui.views.base import TextView, View
 
 __all__ = ("answer_text_view", "answer_view")
 

@@ -7,7 +7,6 @@ from presentation.ui.buttons.keyboard import (
     SUPPORT_BUTTON,
 )
 
-
 __all__ = ("USER_MENU_MARKUP",)
 
 

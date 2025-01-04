@@ -1,10 +1,9 @@
 from aiogram.types import (
+    ForceReply,
     InlineKeyboardMarkup,
     ReplyKeyboardMarkup,
     ReplyKeyboardRemove,
-    ForceReply,
 )
-
 
 __all__ = ("ReplyMarkup", "TextView", "View")
 

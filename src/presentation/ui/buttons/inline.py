@@ -1,8 +1,7 @@
-from aiogram.types import InlineKeyboardButton
 from aiogram.filters.callback_data import CallbackData
+from aiogram.types import InlineKeyboardButton
 
 from presentation.ui.buttons.texts import ACCEPT_BUTTON_TEXT, REJECT_BUTTON_TEXT
-
 
 __all__ = ("create_accept_inline_button", "create_reject_inline_button")
 

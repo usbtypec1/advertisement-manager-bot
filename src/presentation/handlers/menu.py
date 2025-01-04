@@ -1,13 +1,12 @@
-from aiogram import Router, F
-from aiogram.types import Message
+from aiogram import F, Router
 from aiogram.filters import StateFilter
+from aiogram.types import Message
 from sqlalchemy.orm import Session
 
-from presentation.responses import answer_view
 from application.interactors import UserReadByIdInteractor
 from infrastructure.database.dao.users import UserDAO
+from presentation.responses import answer_view
 from presentation.ui.views import UserMenuView
-
 
 __all__ = ("router",)
 

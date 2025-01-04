@@ -1,8 +1,7 @@
-from collections.abc import Generator
-import sqlite3
 import pathlib
+import sqlite3
+from collections.abc import Generator
 from typing import Final
-
 
 __all__ = ("get_connection", "DATABASE_FILE_PATH")
 

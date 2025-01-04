@@ -4,14 +4,14 @@ import logging
 from aiogram import Bot, Dispatcher
 from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
+from aiogram.fsm.storage.memory import MemoryStorage
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from aiogram.fsm.storage.memory import MemoryStorage
 
-from application.config import load_config_from_toml_file, DATABASE_FILE_PATH
+from application.config import DATABASE_FILE_PATH, load_config_from_toml_file
 from application.middlewares import DatabaseSessionMiddleware
-from presentation import handlers
 from infrastructure.database.models.base import Base
+from presentation import handlers
 
 
 def include_handlers(dispatcher: Dispatcher) -> None:

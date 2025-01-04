@@ -6,7 +6,6 @@ from sqlalchemy.sql import func
 
 from infrastructure.database.models.base import Base
 
-
 __all__ = ("User",)
 
 

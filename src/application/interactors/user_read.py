@@ -1,8 +1,7 @@
-from infrastructure.database.dao.users import UserDAO
-from infrastructure.exceptions import ObjectNotFoundError
 from domain.entities.users import User
 from domain.exceptions import UserNotFoundError
-
+from infrastructure.database.dao.users import UserDAO
+from infrastructure.exceptions import ObjectNotFoundError
 
 __all__ = ("UserReadByIdInteractor",)
 

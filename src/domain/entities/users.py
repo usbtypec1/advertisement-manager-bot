@@ -3,7 +3,6 @@ from typing import Annotated
 
 from pydantic import BaseModel, Field
 
-
 __all__ = ("User",)
 
 

@@ -1,14 +1,13 @@
+from dataclasses import dataclass
 from datetime import datetime
 from typing import Protocol
-from dataclasses import dataclass
 
 from sqlalchemy import select
 from sqlalchemy.dialects.sqlite import insert
 
-from infrastructure.database.models import User
 from infrastructure.database.dao.base import DatabaseDAO
+from infrastructure.database.models import User
 from infrastructure.exceptions import ObjectNotFoundError
-
 
 __all__ = ("UserDAO",)
 
