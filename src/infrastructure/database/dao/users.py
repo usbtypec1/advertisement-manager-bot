@@ -3,7 +3,6 @@ from datetime import datetime
 from typing import Protocol
 
 from sqlalchemy import select
-from sqlalchemy.dialects.sqlite import insert
 
 from infrastructure.database.dao.base import DatabaseDAO
 from infrastructure.database.models import User
@@ -25,19 +24,28 @@ class UserCreate(Protocol):
     id: int
     full_name: str
     username: str | None
+    phone_number: str | None
 
 
 class UserDAO(DatabaseDAO):
-    def upsert(self, user: UserCreate) -> None:
-        statement = insert(User).values(
-            id=user.id, full_name=user.full_name, username=user.username
+    def upsert(self, user: UserCreate) -> UserDTO:
+        user_to_create = User(
+            id=user.id,
+            full_name=user.full_name,
+            username=user.username,
+            phone_number=user.phone_number,
         )
-        statement = statement.on_conflict_do_update(
-            index_elements=(User.id,),
-            set_={"full_name": user.full_name, "username": user.username},
-        )
+
         with self._session.begin():
-            self._session.execute(statement)
+            user_created = self._session.merge(user_to_create)
+
+        return UserDTO(
+            id=user_created.id,
+            full_name=user_created.full_name,
+            username=user_created.username,
+            phone_number=user_created.phone_number,
+            created_at=user_created.created_at,
+        )
 
     def get_by_id(self, user_id: int) -> UserDTO:
         statement = select(User).where(User.id == user_id)

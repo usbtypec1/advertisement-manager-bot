@@ -10,4 +10,5 @@ class User(BaseModel):
     id: int
     full_name: Annotated[str, Field(max_length=64)]
     username: Annotated[str | None, Field(max_length=64)]
+    phone_number: Annotated[str | None, Field(max_length=16)]
     created_at: datetime.datetime
