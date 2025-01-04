@@ -22,3 +22,4 @@ class UserRegisterPhoneNumberInputView(TextView):
 class UserRegisterConfirmView(TextView):
     text = texts.USER_REGISTER_CONFIRM_TEXT
     reply_markup = markups.USER_REGISTER_CONFIRM_MARKUP
+    disable_web_page_preview = True

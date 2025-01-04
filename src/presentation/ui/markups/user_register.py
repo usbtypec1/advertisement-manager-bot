@@ -25,6 +25,7 @@ __all__ = (
 USER_REGISTER_FLOW_START_MARKUP: Final[ReplyKeyboardMarkup] = ReplyKeyboardMarkup(
     resize_keyboard=True,
     keyboard=[[USER_REGISTER_FLOW_START_BUTTON]],
+    one_time_keyboard=True,
 )
 
 
@@ -39,6 +40,7 @@ USER_REGISTER_PHONE_NUMBER_INPUT_MARKUP: Final[ReplyKeyboardMarkup] = (
                 SKIP_BUTTON,
             ],
         ],
+        one_time_keyboard=True,
     )
 )
 

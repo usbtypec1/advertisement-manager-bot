@@ -2,6 +2,8 @@ import asyncio
 import logging
 
 from aiogram import Bot, Dispatcher
+from aiogram.client.default import DefaultBotProperties
+from aiogram.enums import ParseMode
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from aiogram.fsm.storage.memory import MemoryStorage
@@ -21,7 +23,10 @@ def include_handlers(dispatcher: Dispatcher) -> None:
 
 async def main() -> None:
     config = load_config_from_toml_file()
-    bot = Bot(token=config.telegram_bot_token)
+    bot = Bot(
+        token=config.telegram_bot_token,
+        default=DefaultBotProperties(parse_mode=ParseMode.HTML),
+    )
     dispatcher = Dispatcher(storage=MemoryStorage())
 
     include_handlers(dispatcher)

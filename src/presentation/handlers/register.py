@@ -8,6 +8,7 @@ from presentation.responses import answer_view
 from presentation.ui.views import (
     UserRegisterFlowStartView,
     UserRegisterPhoneNumberInputView,
+    UserRegisterConfirmView,
 )
 from presentation.ui.buttons.texts import (
     USER_REGISTER_FLOW_START_BUTTON_TEXT,
@@ -62,3 +63,6 @@ async def on_user_register_phone_number_input(
 
     await state.update_data(phone_number=phone_number)
     await state.set_state(UserRegisterStates.confirm)
+
+    view = UserRegisterConfirmView()
+    await answer_view(message, view)
