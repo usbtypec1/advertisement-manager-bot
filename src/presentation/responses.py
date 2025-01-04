@@ -2,7 +2,12 @@ from aiogram.types import Message
 
 from presentation.ui.views.base import TextView, View
 
-__all__ = ("answer_text_view", "answer_view")
+__all__ = (
+    "answer_text_view",
+    "answer_view",
+    "edit_as_accepted",
+    "edit_as_rejected",
+)
 
 
 async def answer_text_view(message: Message, view: TextView) -> None:
@@ -17,3 +22,11 @@ async def answer_view(message: Message, view: View) -> None:
     match view:
         case TextView():
             await answer_text_view(message, view)
+
+
+async def edit_as_accepted(message: Message) -> None:
+    await message.edit_text(f"{message.text}\n\n✅ Подтверждено")
+
+
+async def edit_as_rejected(message: Message) -> None:
+    await message.edit_text(f"{message.text}\n\n❌ Отклонено")

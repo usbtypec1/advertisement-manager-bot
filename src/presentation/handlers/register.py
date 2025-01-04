@@ -12,7 +12,11 @@ from application.interactors.user_create import (
 from application.states import UserRegisterStates
 from domain.exceptions.users import UserNotFoundError
 from infrastructure.database.dao.users import UserDAO
-from presentation.responses import answer_view
+from presentation.responses import (
+    answer_view,
+    edit_as_accepted,
+    edit_as_rejected,
+)
 from presentation.ui.buttons.texts import (
     SKIP_BUTTON_TEXT,
     USER_REGISTER_FLOW_START_BUTTON_TEXT,
@@ -106,6 +110,7 @@ async def on_user_register_confirm_accept(
     interactor.execute()
 
     view = UserMenuView()
+    await edit_as_accepted(message)
     await answer_view(message, view)
 
 
@@ -117,5 +122,8 @@ async def on_user_register_confirm_reject(
     callback_query: CallbackQuery,
     state: FSMContext,
 ) -> None:
+    await state.clear()
+
     message: Message = callback_query.message  # type: ignore [reportOptionalMemberAccess]
+    await edit_as_rejected(message)
     await message.edit_text("☺️ Ждем вас если передумаете")

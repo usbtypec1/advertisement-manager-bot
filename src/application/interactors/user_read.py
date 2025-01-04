@@ -21,5 +21,6 @@ class UserReadByIdInteractor:
             id=user.id,
             full_name=user.full_name,
             username=user.username,
+            phone_number=user.phone_number,
             created_at=user.created_at,
         )
