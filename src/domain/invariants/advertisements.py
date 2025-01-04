@@ -13,4 +13,6 @@ ADVERTISEMENT_TEXT_MAX_LENGTH: Final[int] = 1024
 
 def validate_advertisement_text_length(text: str) -> None:
     if len(text) > ADVERTISEMENT_TEXT_MAX_LENGTH:
-        raise AdvertisementTextLengthError
+        raise AdvertisementTextLengthError(
+            max_length=ADVERTISEMENT_TEXT_MAX_LENGTH,
+        )
