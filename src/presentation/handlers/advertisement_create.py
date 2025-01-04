@@ -9,6 +9,7 @@ from domain.invariants.advertisements import validate_advertisement_text_length
 from presentation.responses import answer_view
 from presentation.ui.buttons.texts import (
     ADVERTISEMENT_CREATE_FLOW_START_BUTTON_TEXT,
+    CONTINUE_BUTTON_TEXT,
 )
 from presentation.ui.views import AdvertisementCreateTextInputView
 from presentation.ui.views.advertisement_create import (
@@ -33,7 +34,7 @@ async def on_advertisement_create_flow_start(
 
 @router.message(
     F.text,
-    StateFilter("*"),
+    StateFilter(AdvertisementCreateStates.text),
 )
 async def on_advertisement_create_text_input(
     message: Message,
@@ -53,3 +54,25 @@ async def on_advertisement_create_text_input(
 
     view = AdvertisementCreateMediaInputView()
     await answer_view(message, view)
+
+
+@router.message(
+    F.text == CONTINUE_BUTTON_TEXT,
+    StateFilter(AdvertisementCreateStates.media),
+)
+async def on_advertisement_create_media_input_finish(
+    message: Message,
+    state: FSMContext,
+) -> None:
+    await state.set_state(AdvertisementCreateStates.confirm)
+
+
+@router.message(
+    F.photo,
+    StateFilter(AdvertisementCreateStates.media),
+)
+async def on_advertisement_create_media_input(
+    message: Message,
+    state: FSMContext,
+) -> None:
+    pass

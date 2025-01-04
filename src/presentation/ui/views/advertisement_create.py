@@ -1,7 +1,11 @@
 from presentation.ui import markups, texts
-from presentation.ui.views.base import TextView
+from presentation.ui.views.base import PhotoView, TextView
 
-__all__ = ("AdvertisementCreateTextInputView",)
+__all__ = (
+    "AdvertisementCreateTextInputView",
+    "AdvertisementCreateMediaInputView",
+    "AdvetisementCreateMediaUploadedView",
+)
 
 
 class AdvertisementCreateTextInputView(TextView):
@@ -14,4 +18,6 @@ class AdvertisementCreateMediaInputView(TextView):
     reply_markup = markups.ADVERTISEMENT_CREATE_MEDIA_INPUT_MARKUP
 
 
-# class AdvetisementCreateSpecificPhotoView()
+class AdvetisementCreateMediaUploadedView(PhotoView):
+    text = texts.ADVERTISEMENT_CREATE_MEDIA_UPLOADED_TEXT
+    reply_markup = markups.ADVERTISEMENT_CREATE_MEDIA_UPLOADED_MARKUP
