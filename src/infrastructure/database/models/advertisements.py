@@ -5,19 +5,16 @@ from sqlalchemy import ForeignKey, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy.sql import func
 
+from infrastructure.database.models.advertisement_media_file_types import (
+    AdvertisementMediaFileType,
+)
 from infrastructure.database.models.base import Base
 
 __all__ = (
     "Advertisement",
     "AdvertisementStatus",
     "AdvertisementMediaFile",
-    "AdvertisementMediaFileType",
 )
-
-
-class AdvertisementMediaFileType(IntEnum):
-    PHOTO = 1
-    VIDEO = 2
 
 
 class AdvertisementStatus(IntEnum):
