@@ -10,6 +10,7 @@ from application.callback_data import (
 )
 from application.interactors import (
     TemporaryMediaFileCreateInteractor,
+    TemporaryMediaFilesDeleteAllInteractor,
     TemporaryMediaFilesReadInteractor,
     TemporaryMediaFileToCreate,
 )
@@ -20,7 +21,7 @@ from infrastructure.database.dao.temporary_media_files import (
     TemporaryMediaFileDAO,
 )
 from infrastructure.database.models import AdvertisementMediaFileType
-from presentation.responses import answer_view
+from presentation.responses import answer_view, edit_as_rejected
 from presentation.ui.buttons.texts import (
     ADVERTISEMENT_CREATE_FLOW_START_BUTTON_TEXT,
     CONTINUE_BUTTON_TEXT,
@@ -161,4 +162,15 @@ async def on_advertisement_create_confirm_reject(
     state: FSMContext,
     session: Session,
 ) -> None:
-    pass
+    temporary_media_file_dao = TemporaryMediaFileDAO(session)
+    temporary_media_files_delete_all_interactor = (
+        TemporaryMediaFilesDeleteAllInteractor(
+            temporary_media_file_dao=temporary_media_file_dao,
+            user_id=callback_query.from_user.id,
+        )
+    )
+    temporary_media_files_delete_all_interactor.execute()
+    await state.clear()
+
+    message: Message = callback_query.message  # type: ignore [reportOptionalMemberAccess]
+    await edit_as_rejected(message)
