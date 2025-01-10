@@ -24,6 +24,7 @@ ADVERTISEMENT_CREATE_TEXT_INPUT_MARKUP = ForceReply(
 ADVERTISEMENT_CREATE_MEDIA_INPUT_MARKUP = ReplyKeyboardMarkup(
     resize_keyboard=True,
     keyboard=[[CONTINUE_BUTTON]],
+    one_time_keyboard=True,
 )
 ADVERTISEMENT_CREATE_MEDIA_UPLOADED_MARKUP = InlineKeyboardMarkup(
     inline_keyboard=[[DELETE_BUTTON]],

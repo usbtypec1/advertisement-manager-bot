@@ -28,8 +28,14 @@ class AdvertisementCreateMediaInputView(TextView):
 
 
 class AdvetisementCreateMediaUploadedView(PhotoView):
-    text = texts.ADVERTISEMENT_CREATE_MEDIA_UPLOADED_TEXT
+    caption = texts.ADVERTISEMENT_CREATE_MEDIA_UPLOADED_TEXT
     reply_markup = markups.ADVERTISEMENT_CREATE_MEDIA_UPLOADED_MARKUP
+
+    def __init__(self, photo: str) -> None:
+        self.__photo = photo
+
+    def get_photo(self) -> str:
+        return self.__photo
 
 
 class AdvertisementCreateMediaFilesView(MediaGroupView):
