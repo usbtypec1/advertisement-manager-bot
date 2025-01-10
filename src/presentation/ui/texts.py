@@ -9,6 +9,7 @@ __all__ = (
     "ADVERTISEMENT_CREATE_TEXT_INPUT_TEXT",
     "ADVERTISEMENT_CREATE_MEDIA_INPUT_TEXT",
     "ADVERTISEMENT_CREATE_MEDIA_UPLOADED_TEXT",
+    "ADVERTISEMENT_CREATE_CONFIRM_TEXT",
 )
 
 
@@ -32,3 +33,6 @@ ADVERTISEMENT_CREATE_MEDIA_INPUT_TEXT: Final[str] = (
     "📸 Вы можете отправить фото/видео для вашего объявления"
 )
 ADVERTISEMENT_CREATE_MEDIA_UPLOADED_TEXT: Final[str] = "✅ Загружено"
+ADVERTISEMENT_CREATE_CONFIRM_TEXT: Final[str] = (
+    "Вы уверены что хотите опубликовать это объявление?"
+)
