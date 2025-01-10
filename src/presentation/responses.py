@@ -1,3 +1,5 @@
+from aiogram import Bot
+from aiogram.exceptions import TelegramAPIError
 from aiogram.types import CallbackQuery, Message
 
 from presentation.ui.views.base import MediaGroupView, PhotoView, TextView, View
@@ -11,6 +13,7 @@ __all__ = (
     "edit_as_rejected",
     "answer_as_deleted",
     "answer_as_rejected",
+    "send_view",
 )
 
 
@@ -60,3 +63,14 @@ async def answer_as_deleted(callback_query: CallbackQuery) -> None:
 
 async def answer_as_rejected(callback_query: CallbackQuery) -> None:
     await callback_query.answer(text="❌ Отклонено", show_alert=True)
+
+
+async def send_view(bot: Bot, chat_id: int, view: TextView) -> Message | None:
+    try:
+        await bot.send_message(
+            chat_id=chat_id,
+            text=view.get_text(),
+            reply_markup=view.get_reply_markup(),
+        )
+    except TelegramAPIError:
+        return
