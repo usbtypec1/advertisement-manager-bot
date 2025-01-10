@@ -3,7 +3,7 @@ from .temporary_media_file_create import (
     TemporaryMediaFileToCreate,
 )
 from .temporary_media_file_delete_by_id import (
-    TemporaryMediaFilesDeleteByIDInteractor,
+    TemporaryMediaFileDeleteByIDInteractor,
 )
 from .temporary_media_files_delete_all import (
     TemporaryMediaFilesDeleteAllInteractor,
@@ -18,6 +18,6 @@ __all__ = (
     "TemporaryMediaFilesReadInteractor",
     "TemporaryMediaFileCreateInteractor",
     "TemporaryMediaFileToCreate",
-    "TemporaryMediaFilesDeleteByIDInteractor",
+    "TemporaryMediaFileDeleteByIDInteractor",
     "TemporaryMediaFilesDeleteAllInteractor",
 )

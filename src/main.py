@@ -16,6 +16,7 @@ from presentation import handlers
 
 def include_handlers(dispatcher: Dispatcher) -> None:
     dispatcher.include_routers(
+        handlers.temporary_media_file_delete.router,
         handlers.advertisement_create.router,
         handlers.register.router,
         handlers.menu.router,

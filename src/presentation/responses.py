@@ -1,4 +1,4 @@
-from aiogram.types import Message
+from aiogram.types import CallbackQuery, Message
 
 from presentation.ui.views.base import MediaGroupView, PhotoView, TextView, View
 
@@ -9,6 +9,8 @@ __all__ = (
     "answer_media_group_view",
     "edit_as_accepted",
     "edit_as_rejected",
+    "answer_as_deleted",
+    "answer_as_rejected",
 )
 
 
@@ -50,3 +52,11 @@ async def edit_as_accepted(message: Message) -> None:
 
 async def edit_as_rejected(message: Message) -> None:
     await message.edit_text(f"{message.text}\n\n❌ Отклонено")
+
+
+async def answer_as_deleted(callback_query: CallbackQuery) -> None:
+    await callback_query.answer(text="❗️ Удалено", show_alert=True)
+
+
+async def answer_as_rejected(callback_query: CallbackQuery) -> None:
+    await callback_query.answer(text="❌ Отклонено", show_alert=True)

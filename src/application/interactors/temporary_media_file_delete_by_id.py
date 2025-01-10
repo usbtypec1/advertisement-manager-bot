@@ -4,11 +4,11 @@ from infrastructure.database.dao.temporary_media_files import (
     TemporaryMediaFileDAO,
 )
 
-__all__ = ("TemporaryMediaFilesDeleteByIDInteractor",)
+__all__ = ("TemporaryMediaFileDeleteByIDInteractor",)
 
 
 @dataclass(frozen=True, slots=True, kw_only=True)
-class TemporaryMediaFilesDeleteByIDInteractor:
+class TemporaryMediaFileDeleteByIDInteractor:
     temporary_media_file_dao: TemporaryMediaFileDAO
     user_id: int
     file_telegram_id: str
