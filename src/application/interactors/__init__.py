@@ -1,3 +1,8 @@
+from .advertisement_create import (
+    AdvertisementCreateInteractor,
+    AdvertisementMediaFileToCreateDTO,
+    AdvertisementToCreateDTO,
+)
 from .temporary_media_file_create import (
     TemporaryMediaFileCreateInteractor,
     TemporaryMediaFileToCreate,
@@ -20,4 +25,7 @@ __all__ = (
     "TemporaryMediaFileToCreate",
     "TemporaryMediaFileDeleteByIDInteractor",
     "TemporaryMediaFilesDeleteAllInteractor",
+    "AdvertisementCreateInteractor",
+    "AdvertisementToCreateDTO",
+    "AdvertisementMediaFileToCreateDTO",
 )

@@ -9,6 +9,9 @@ from application.callback_data import (
     REJECT_CALLBACK_DATA,
 )
 from application.interactors import (
+    AdvertisementCreateInteractor,
+    AdvertisementMediaFileToCreateDTO,
+    AdvertisementToCreateDTO,
     TemporaryMediaFileCreateInteractor,
     TemporaryMediaFilesDeleteAllInteractor,
     TemporaryMediaFilesReadInteractor,
@@ -17,13 +20,15 @@ from application.interactors import (
 from application.states import AdvertisementCreateStates
 from domain.exceptions.advertisements import AdvertisementTextLengthError
 from domain.invariants.advertisements import validate_advertisement_text_length
-from infrastructure.database.dao.temporary_media_files import (
+from infrastructure.database.dao import (
+    AdvertisementDAO,
     TemporaryMediaFileDAO,
 )
 from infrastructure.database.models import AdvertisementMediaFileType
 from presentation.responses import (
     answer_as_rejected,
     answer_view,
+    edit_as_accepted,
     edit_as_rejected,
 )
 from presentation.ui.buttons.texts import (
@@ -163,13 +168,49 @@ async def on_advertisement_create_confirm_accept(
     state: FSMContext,
     session: Session,
 ) -> None:
-    pass
-    # temporary_media_file_dao = TemporaryMediaFileDAO(session)
-    # temporary_media_files_read_interactor = TemporaryMediaFilesReadInteractor(
-    #     temporary_media_file_dao=temporary_media_file_dao,
-    #     user_id=callback_query.from_user.id,
-    # )
-    # user_temporary_media_files = temporary_media_files_read_interactor.execute()
+    user_id: int = callback_query.from_user.id
+
+    state_data: dict = await state.get_data()
+    text: str = state_data["text"]
+
+    temporary_media_file_dao = TemporaryMediaFileDAO(session)
+
+    temporary_media_files_read_interactor = TemporaryMediaFilesReadInteractor(
+        temporary_media_file_dao=temporary_media_file_dao,
+        user_id=user_id,
+    )
+    user_temporary_media_files = temporary_media_files_read_interactor.execute()
+
+    advertisement_dao = AdvertisementDAO(session)
+
+    advertisement_media_files_to_create_dto = [
+        AdvertisementMediaFileToCreateDTO(
+            telegram_id=media_file.telegram_id,
+            type=media_file.type,
+        )
+        for media_file in user_temporary_media_files.media_files
+    ]
+    advertisement_to_create_dto = AdvertisementToCreateDTO(
+        user_id=user_id,
+        text=text,
+        media_files=advertisement_media_files_to_create_dto,
+    )
+    advertisement_create_interactor = AdvertisementCreateInteractor(
+        advertisement_dao=advertisement_dao,
+        advertisement=advertisement_to_create_dto,
+    )
+    advertisement_create_interactor.execute()
+
+    temporary_media_files_read_interactor = TemporaryMediaFilesReadInteractor(
+        temporary_media_file_dao=temporary_media_file_dao,
+        user_id=callback_query.from_user.id,
+    )
+    user_temporary_media_files = temporary_media_files_read_interactor.execute()
+
+    await callback_query.answer()
+
+    message: Message = callback_query.message  # type: ignore [reportOptionalMemberAccess]
+    await edit_as_accepted(message)
 
 
 @router.callback_query(
