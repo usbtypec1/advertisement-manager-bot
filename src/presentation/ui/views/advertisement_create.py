@@ -13,7 +13,7 @@ __all__ = (
     "AdvertisementCreateMediaInputView",
     "AdvetisementCreateMediaUploadedView",
     "AdvertisementCreateMediaFilesView",
-    "AdvertisementCreateConfirmAcceptView",
+    "AdvertisementCreateConfirmView",
 )
 
 
@@ -54,6 +54,6 @@ class AdvertisementCreateMediaFilesView(MediaGroupView):
         return self.__text
 
 
-class AdvertisementCreateConfirmAcceptView(TextView):
+class AdvertisementCreateConfirmView(TextView):
     text = texts.ADVERTISEMENT_CREATE_CONFIRM_TEXT
     reply_markup = markups.ADVERTISEMENT_CREATE_CONFIRM_MARKUP

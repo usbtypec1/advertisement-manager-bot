@@ -1,4 +1,10 @@
-from .advertisement_create import AdvertisementCreateTextInputView
+from .advertisement_create import (
+    AdvertisementCreateConfirmView,
+    AdvertisementCreateMediaFilesView,
+    AdvertisementCreateMediaInputView,
+    AdvertisementCreateTextInputView,
+    AdvetisementCreateMediaUploadedView,
+)
 from .user_menu import UserMenuView
 from .user_register import (
     UserRegisterConfirmView,
@@ -12,4 +18,8 @@ __all__ = (
     "UserRegisterPhoneNumberInputView",
     "UserRegisterConfirmView",
     "AdvertisementCreateTextInputView",
+    "AdvertisementCreateConfirmView",
+    "AdvertisementCreateMediaFilesView",
+    "AdvertisementCreateMediaInputView",
+    "AdvetisementCreateMediaUploadedView",
 )
