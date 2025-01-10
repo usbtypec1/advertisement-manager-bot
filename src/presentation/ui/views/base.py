@@ -4,8 +4,9 @@ from aiogram.types import (
     ReplyKeyboardMarkup,
     ReplyKeyboardRemove,
 )
+from aiogram.utils.media_group import MediaGroupBuilder, MediaType
 
-__all__ = ("ReplyMarkup", "TextView", "PhotoView", "View")
+__all__ = ("ReplyMarkup", "TextView", "PhotoView", "MediaGroupView", "View")
 
 
 # FOR TYPE INSPECTION ONLY !!!
@@ -44,5 +45,23 @@ class PhotoView:
         return self.reply_markup
 
 
+class MediaGroupView:
+    medias: list[MediaType] | None = None
+    caption: str | None = None
+
+    def get_medias(self) -> list[MediaType] | None:
+        return self.medias
+
+    def get_caption(self) -> str | None:
+        return self.caption
+
+    def as_media_group(self) -> list[MediaType]:
+        media_group_builder = MediaGroupBuilder(
+            media=self.get_medias(),
+            caption=self.get_caption(),
+        )
+        return media_group_builder.build()
+
+
 # FOR TYPE INSPECTION ONLY !!!
-type View = TextView | PhotoView
+type View = TextView | PhotoView | MediaGroupView
