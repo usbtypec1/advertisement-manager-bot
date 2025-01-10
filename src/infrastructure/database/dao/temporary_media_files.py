@@ -3,7 +3,7 @@ from dataclasses import dataclass
 from typing import Protocol
 from uuid import UUID
 
-from sqlalchemy import select
+from sqlalchemy import delete, select
 
 from infrastructure.database.dao.base import DatabaseDAO
 from infrastructure.database.models import (
@@ -73,3 +73,18 @@ class TemporaryMediaFileDAO(DatabaseDAO):
             )
             for media_file in result
         ]
+
+    def delete_all(self, user_id: int) -> None:
+        statement = delete(TemporaryMediaFile).where(
+            TemporaryMediaFile.user_id == user_id
+        )
+        with self._session.begin():
+            self._session.execute(statement)
+
+    def delete_by_id(self, *, user_id: int, file_telegram_id: str) -> None:
+        statement = delete(TemporaryMediaFile).where(
+            TemporaryMediaFile.user_id == user_id,
+            TemporaryMediaFile.telegram_id == file_telegram_id,
+        )
+        with self._session.begin():
+            self._session.execute(statement)
